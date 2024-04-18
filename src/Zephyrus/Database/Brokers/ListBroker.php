@@ -143,12 +143,12 @@ abstract class ListBroker extends DatabaseBroker
      */
     protected function countQuery(string $query, array $parameters = []): stdClass
     {
-        $total = self::selectSingle($query, $parameters)->n;
+//        $total = self::selectSingle($query, $parameters)->n;
         $query = $this->queryFilter->filter($query);
         $current = self::selectSingle($query, array_merge($parameters, $this->queryFilter->getQueryParameters()))->n;
         return (object) [
             'current' => $current,
-            'total' => $total
+            'total' => $current
         ];
     }
 
