@@ -38,6 +38,8 @@ class Router
      */
     private $request;
 
+    public $route
+
     /**
      * Launch the routing process to determine, according to the initiated request, the best route to execute. Cannot be
      * overridden to ensure proper functionality.
@@ -56,8 +58,8 @@ class Router
         $this->requestedMethod = strtoupper($this->request->getMethod());
         $this->requestedRepresentations = $this->request->getAcceptedRepresentations();
         $this->verifyRequestMethod();
-        $route = $this->findRouteFromRequest();
-        $this->prepareResponse($route);
+        $this->route = $this->findRouteFromRequest();
+        $this->prepareResponse($this->route)
     }
 
     /**
