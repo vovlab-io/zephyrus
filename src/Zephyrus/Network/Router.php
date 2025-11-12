@@ -38,7 +38,7 @@ class Router
      */
     private $request;
 
-    public $route
+    public $route;
 
     /**
      * Launch the routing process to determine, according to the initiated request, the best route to execute. Cannot be
@@ -59,7 +59,7 @@ class Router
         $this->requestedRepresentations = $this->request->getAcceptedRepresentations();
         $this->verifyRequestMethod();
         $this->route = $this->findRouteFromRequest();
-        $this->prepareResponse($this->route)
+        $this->prepareResponse($this->route);
     }
 
     /**
