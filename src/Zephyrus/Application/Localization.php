@@ -10,6 +10,7 @@ class Localization
     private const GENERATED_CLASS_NAME = "Localize";
     private const DEFAULT_NAMESPACE = "Locale";
     private static ?Localization $instance = null;
+    private static array $installedLocales = [];
 
     /**
      * Currently loaded application locale language. Maps to a directory within /locale.
@@ -56,9 +57,12 @@ class Localization
      */
     public static function getInstalledLocales(): array
     {
-        $results = [];
-        foreach (self::getInstalledLanguages() as $language) {
-            $results[] = $language->locale;
+	$results = self::$installedLocales;
+        if (empty($results)) {
+            foreach (self::getInstalledLanguages() as $language) {
+                $results[] = $language->locale;
+            }
+            self::$installedLocales = $results;
         }
         return $results;
     }
