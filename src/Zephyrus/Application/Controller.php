@@ -17,7 +17,7 @@ use Zephyrus\Network\Router;
 abstract class Controller implements Routable
 {
     protected ?Request $request = null;
-    private Router $router;
+    protected Router $router;
     private array $overrideArguments = [];
     private array $restrictedArguments = [];
 
