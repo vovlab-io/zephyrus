@@ -63,7 +63,8 @@ class ViewBuilder
             'basedir' => realpath(ROOT_DIR . '/public'),
             'expressionLanguage' => 'js',
             'upToDateCheck' => $upToDateCheck,
-            'cache' => $cacheEnabled ? $cacheDirectory : null
+            'cache' => $cacheEnabled ? $cacheDirectory : null,
+            'jsLanguage' => ['booleanLogicalOperators' => true]
         ];
         $this->pug = new Pug($options);
     }
