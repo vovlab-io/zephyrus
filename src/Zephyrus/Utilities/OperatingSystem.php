@@ -61,7 +61,7 @@ class OperatingSystem
     public static function getActiveConnections(int $port = 443)
     {
         //return `netstat -an | grep $port | grep tcp | grep -v 0.0.0.0 | grep -v ::: | cut -d':' -f2 | cut -d' ' -f12 | sort | uniq | wc -l;`;
-        return `netstat -an | grep $port | grep tcp | grep -v 0.0.0.0 | grep -v ::: | grep ESTABLISHED | wc -l`;
+        return shell_exec('netstat -an | grep $port | grep tcp | grep -v 0.0.0.0 | grep -v ::: | grep ESTABLISHED | wc -l');
     }
 
     /**
